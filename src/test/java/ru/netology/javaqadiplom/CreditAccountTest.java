@@ -57,4 +57,50 @@ public class CreditAccountTest {
         });
     }
 
+    @Test
+    public void shouldPay() {
+        CreditAccount account = new CreditAccount(
+                0,
+                5_000,
+                15
+        );
+
+        Assertions.assertEquals(true, account.pay(3_000));
+    }
+
+    @Test
+    public void shouldNotPayNegativeAmount() {
+        CreditAccount account = new CreditAccount(
+                0,
+                5_000,
+                15
+        );
+
+        Assertions.assertEquals(false, account.pay(-3_000));
+    }
+
+    @Test
+    public void shouldNotPayAmountUnderLimit() {
+        CreditAccount account = new CreditAccount(
+                0,
+                5_000,
+                15
+        );
+
+        Assertions.assertEquals(false, account.pay(5_001));
+    }
+
+    @Test
+    public void shouldPayAmountEqualLimit() {
+        CreditAccount account = new CreditAccount(
+                0,
+                5_000,
+                15
+        );
+
+        Assertions.assertEquals(true, account.pay(5_000));
+    }
+
+
+
 }
