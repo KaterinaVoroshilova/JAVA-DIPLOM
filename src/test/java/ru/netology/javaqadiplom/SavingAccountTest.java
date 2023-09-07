@@ -62,14 +62,17 @@ public class SavingAccountTest {
     }
 
     @Test
-    public void minBalanceMoreMaxBalance() {
-        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+    public void negativeBalance() {
                     SavingAccount account = new SavingAccount(
-                            2_000,
                             100,
-                            1_000,
+                            50,
+                            500,
                             5
                     );
-                });
+
+                    account.pay(200);
+
+        Assertions.assertEquals(100, account.getBalance());
     }
 }
+
