@@ -65,10 +65,10 @@ public class SavingAccountTest {
     public void minBalanceMoreMaxBalance() {
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
                     SavingAccount account = new SavingAccount(
-                            -2_000,
-                            6_000,
-                            15_000,
-                            12
+                            2_000,
+                            100,
+                            1_000,
+                            5
                     );
                 });
     }
