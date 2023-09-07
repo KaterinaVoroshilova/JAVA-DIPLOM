@@ -20,20 +20,6 @@ public class SavingAccountTest {
     }
 
     @Test
-    public void ValuesWithDouble() {
-        SavingAccount account = new SavingAccount(
-                2_000,
-                1_000.54,
-                10_000.43,
-                5
-        );
-
-        account.add(3_000);
-
-        Assertions.assertEquals(2_000 + 3_000, account.getBalance());
-    }
-
-    @Test
     public void shouldNotAffectBalanceWhenAddZero() {
         SavingAccount account = new SavingAccount(
                 2_000,
@@ -73,5 +59,17 @@ public class SavingAccountTest {
         account.add(-5_000);
 
         Assertions.assertEquals(1_000, account.getBalance());
+    }
+
+    @Test
+    public void shouldAddNotNullInitialBalance() {
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+                    SavingAccount account = new SavingAccount(
+                            2_000,
+                            15_000,
+                            6_000,
+                            12
+                    );
+                });
     }
 }
