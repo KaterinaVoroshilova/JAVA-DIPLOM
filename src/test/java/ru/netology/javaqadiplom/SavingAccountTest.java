@@ -70,9 +70,20 @@ public class SavingAccountTest {
                             5
                     );
 
-                    account.pay(200);
+                    account.pay(-50);
 
         Assertions.assertEquals(100, account.getBalance());
     }
-}
 
+    @Test
+    public void minBalanceMoreMaxBalance() {
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            SavingAccount account = new SavingAccount(
+                    100,
+                    500,
+                    500,
+                    5
+            );
+        });
+    }
+}
