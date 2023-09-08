@@ -86,4 +86,17 @@ public class SavingAccountTest {
             );
         });
     }
+
+    @Test
+    public void initBalanceEqualMaxBalance() {
+        SavingAccount account = new SavingAccount(
+                500,
+                200,
+                500,
+                10
+        );
+
+        Assertions.assertEquals(true, account.pay(500));
+    }
 }
+
