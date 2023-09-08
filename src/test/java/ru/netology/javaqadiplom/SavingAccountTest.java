@@ -64,15 +64,15 @@ public class SavingAccountTest {
     @Test
     public void balanceReplenishmentIsBelowrMin() {
                     SavingAccount account = new SavingAccount(
-                            0,
                             4_000,
-                            6_000,
+                            3_000,
+                            7_000,
                             5
                     );
 
-                    account.add(3_000);
+                    account.add(1_000);
 
-        Assertions.assertEquals(false, account.getBalance());
+        Assertions.assertEquals(5_000, account.getBalance());
     }
 
     @Test
