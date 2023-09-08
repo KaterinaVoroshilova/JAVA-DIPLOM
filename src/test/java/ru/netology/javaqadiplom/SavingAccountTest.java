@@ -62,15 +62,17 @@ public class SavingAccountTest {
     }
 
     @Test
-    public void initBalanceEqualMinBalance() {
+    public void ReplenishmentOfTheBalanceWhenInit() {
                     SavingAccount account = new SavingAccount(
-                            200,
-                            200,
-                            300,
+                            3_000,
+                            3_000,
+                            6_000,
                             5
                     );
 
-        Assertions.assertEquals(true, account.pay(200));
+                    account.add(2_000);
+
+        Assertions.assertEquals(5_000, account.getBalance());
     }
 
     @Test
