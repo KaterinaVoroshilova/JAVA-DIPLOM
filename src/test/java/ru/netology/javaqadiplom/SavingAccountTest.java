@@ -62,17 +62,15 @@ public class SavingAccountTest {
     }
 
     @Test
-    public void negativeBalance() {
+    public void initBalanceEqualMaxBalance() {
                     SavingAccount account = new SavingAccount(
-                            100,
-                            50,
                             500,
-                            5
+                            200,
+                            500,
+                            10
                     );
 
-                    account.pay(-50);
-
-        Assertions.assertEquals(100, account.getBalance());
+        Assertions.assertEquals(true, account.pay(500));
     }
 
     @Test
