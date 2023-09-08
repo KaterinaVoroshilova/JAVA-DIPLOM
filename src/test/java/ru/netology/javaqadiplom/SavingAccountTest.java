@@ -62,17 +62,17 @@ public class SavingAccountTest {
     }
 
     @Test
-    public void ReplenishmentOfTheBalanceWhenInit() {
+    public void balanceReplenishmentIsHigherMax() {
                     SavingAccount account = new SavingAccount(
                             3_000,
-                            3_000,
+                            4_000,
                             6_000,
                             5
                     );
 
-                    account.add(2_000);
+                    account.add(6_000);
 
-        Assertions.assertEquals(5_000, account.getBalance());
+        Assertions.assertEquals(false, account.getBalance());
     }
 
     @Test
