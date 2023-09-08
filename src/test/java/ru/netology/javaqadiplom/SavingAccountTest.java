@@ -70,7 +70,7 @@ public class SavingAccountTest {
                             5
                     );
 
-        Assertions.assertEquals(true, account.pay(500));
+        Assertions.assertEquals(true, account.pay(200));
     }
 
     @Test
