@@ -62,7 +62,7 @@ public class SavingAccountTest {
     }
 
     @Test
-    public void balanceReplenishmentIsBelowrMin() {
+    public void balanceReplenishmentMinMax() {
                     SavingAccount account = new SavingAccount(
                             4_000,
                             3_000,
