@@ -63,20 +63,58 @@ public class SavingAccountTest {
 
     @Test
     public void balanceReplenishmentMinMax() {
-                    SavingAccount account = new SavingAccount(
-                            4_000,
-                            3_000,
-                            7_000,
-                            5
-                    );
+        SavingAccount account = new SavingAccount(
+                4_000,
+                3_000,
+                7_000,
+                5
+        );
 
-                    account.add(1_000);
+        account.add(1_000);
 
         Assertions.assertEquals(5_000, account.getBalance());
     }
 
     @Test
     public void minBalanceMoreMaxBalance() {
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            SavingAccount account = new SavingAccount(
+                    2_000,
+                    15_000,
+                    6_000,
+                    12
+            );
+        });
+    }
+
+    @Test
+    public void transferOfNegativeInitialBalance() {
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            SavingAccount account = new SavingAccount(
+                    -2_000,
+                    6_000,
+                    15_000,
+                    12
+            );
+        });
+    }
+
+    @Test
+    public void negativeBalancePay() {
+        SavingAccount account = new SavingAccount(
+                100,
+                50,
+                500,
+                5
+        );
+
+        account.pay(200);
+
+        Assertions.assertEquals(100, account.getBalance());
+    }
+
+    @Test
+    public void minBalanceEqualsMaxBalance() {
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
             SavingAccount account = new SavingAccount(
                     100,
@@ -98,5 +136,59 @@ public class SavingAccountTest {
 
         Assertions.assertEquals(true, account.pay(500));
     }
-}
 
+    @Test
+    public void initBalanceEqualMinBalance() {
+        SavingAccount account = new SavingAccount(
+                200,
+                200,
+                300,
+                5
+        );
+
+        Assertions.assertEquals(true, account.pay(200));
+    }
+
+    @Test
+    public void ReplenishmentOfTheBalanceWhenInit() {
+        SavingAccount account = new SavingAccount(
+                3_000,
+                3_000,
+                6_000,
+                5
+        );
+
+        account.add(2_000);
+
+        Assertions.assertEquals(5_000, account.getBalance());
+    }
+
+    @Test
+    public void balanceReplenishmentIsHigherMax() {
+        SavingAccount account = new SavingAccount(
+                3_000,
+                4_000,
+                6_000,
+                5
+        );
+
+        account.add(6_000);
+
+        Assertions.assertEquals(false, account.getBalance());
+    }
+
+    @Test
+    public void balanceReplenishmentIsBelowrMin() {
+        SavingAccount account = new SavingAccount(
+                0,
+                4_000,
+                6_000,
+                5
+        );
+
+        account.add(3_000);
+
+        Assertions.assertEquals(false, account.getBalance());
+    }
+
+}
