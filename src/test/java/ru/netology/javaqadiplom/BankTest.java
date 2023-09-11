@@ -18,7 +18,7 @@ public class BankTest {
     );
     CreditAccount account3 = new CreditAccount(
             0,
-            5_000,
+            7_000,
             15
     );
 
@@ -67,10 +67,19 @@ public class BankTest {
     }
 
     @Test
-    public void testFour() { // перевод отрицательной суммы
+    public void negativeAmountTransfer() {
         Bank bank = new Bank();
 
         Assertions.assertEquals(false,bank.transfer(account6, account5,-1_000));
     }
+
+    @Test
+    public void NotTransferCreditToSavingAmountBiggerCreditLimit() {
+        Bank bank = new Bank();
+
+        Assertions.assertEquals(false,bank.transfer(account3, account1,7_001));
+    }
+
+
 
 }
