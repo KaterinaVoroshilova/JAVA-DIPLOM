@@ -48,8 +48,9 @@ public class BankTest {
 
         Assertions.assertEquals(false,bank.transfer(account5, account4,5_000));
     }
-    //   @Test
-    public void test() { // проверка баланса аккаунта после перевода
+
+    @Test
+    public void СheckingBalanceAfterTransfer() {
         Bank bank = new Bank();
 
         Assertions.assertEquals(true,bank.transfer(account4, account5,3_000));
@@ -58,8 +59,8 @@ public class BankTest {
     }
 
 
-   // @Test
-    public void testThree() { // перевод на то же счет
+   @Test
+    public void transferToTheSameAccount() {
         Bank bank = new Bank();
 
         Assertions.assertEquals(false,bank.transfer(account6, account6,1_000));
