@@ -12,10 +12,9 @@ public class CreditAccount extends Account {
      * Создаёт новый объект кредитного счёта с заданными параметрами.
      * Если параметры некорректны (кредитный лимит отрицательный и так далее), то
      * должно выкидываться исключения вида IllegalArgumentException.
-     *
      * @param initialBalance - неотрицательное число, начальный баланс для счёта
-     * @param creditLimit    - неотрицательное число, максимальная сумма которую можно задолжать банку
-     * @param rate           - неотрицательное число, ставка кредитования для расчёта долга за отрицательный баланс
+     * @param creditLimit - неотрицательное число, максимальная сумма которую можно задолжать банку
+     * @param rate - неотрицательное число, ставка кредитования для расчёта долга за отрицательный баланс
      */
     public CreditAccount(int initialBalance, int creditLimit, int rate) {
         if (rate <= 0) {
@@ -23,22 +22,10 @@ public class CreditAccount extends Account {
                     "Накопительная ставка не может быть отрицательной, а у вас: " + rate
             );
         }
-        if (initialBalance < 0) {
-            throw new IllegalArgumentException(
-                    "Начальный баланс не может быть отрицательным, а у вас: " + initialBalance
-            );
-        }
-        if (creditLimit < 0) {
-            throw new IllegalArgumentException(
-                    "Баланс отрицательный, а у вас: " + creditLimit
-            );
-        }
-
         this.balance = initialBalance;
         this.creditLimit = creditLimit;
         this.rate = rate;
     }
-
 
     /**
      * Операция оплаты с карты на указанную сумму.
@@ -54,15 +41,14 @@ public class CreditAccount extends Account {
         if (amount <= 0) {
             return false;
         }
-        balance -= amount;
-        if (balance >= -creditLimit) {
+        balance = balance - amount;
+        if (balance > -creditLimit) {
+            balance = -amount;
             return true;
         } else {
             return false;
         }
     }
-
-
 
     /**
      * Операция пополнения карты на указанную сумму.
@@ -76,7 +62,7 @@ public class CreditAccount extends Account {
      * @return
      */
     @Override
-    public boolean add ( int amount) {
+    public boolean add(int amount) {
         if (amount <= 0) {
             return false;
         }
