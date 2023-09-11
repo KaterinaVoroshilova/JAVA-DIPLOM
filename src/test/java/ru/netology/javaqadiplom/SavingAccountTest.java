@@ -285,7 +285,7 @@ public class SavingAccountTest {
     }
 
     @Test
-пше     public void balanceReplenishmentIsHigherMax() {
+    public void balanceReplenishmentIsHigherMax() {
         SavingAccount account = new SavingAccount(
                 4_000,
                 4_000,
