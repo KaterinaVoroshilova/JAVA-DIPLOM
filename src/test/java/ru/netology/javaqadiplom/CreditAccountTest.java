@@ -127,6 +127,19 @@ public class CreditAccountTest {
     }
 
     @Test
+    public void shouldNotDoublePay() {
+        CreditAccount account = new CreditAccount(
+                0,
+                5_000,
+                15
+        );
+
+        account.pay(2000);
+
+        Assertions.assertEquals(false, account.pay(3001));
+    }
+
+    @Test
     public void shouldPayAmountWithInitialBalanceNotNull() {
         CreditAccount account = new CreditAccount(
                 1_000,
