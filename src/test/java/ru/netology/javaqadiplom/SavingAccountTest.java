@@ -54,13 +54,13 @@ public class SavingAccountTest {
     }
 
     @Test
-    public void shouldNotCreateSavingAccountWithNegativeMinBiggerMax() {
+    public void minBalanceMoreMaxBalance() {
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            SavingAccount savingAccount = new SavingAccount(
-                    1_000,
-                    5_000,
-                    3_000,
-                    15
+            SavingAccount account = new SavingAccount(
+                    2_000,
+                    15_000,
+                    6_000,
+                    12
             );
         });
     }
@@ -178,18 +178,19 @@ public class SavingAccountTest {
 
 
     @Test
-    public void shouldAddLessThanMaxBalance() {
+    public void ReplenishmentOfTheBalanceWhenInit() {
         SavingAccount account = new SavingAccount(
-                2_000,
-                1_000,
-                10_000,
+                3_000,
+                3_000,
+                6_000,
                 5
         );
 
-        account.add(3_000);
+        account.add(2_000);
 
-        Assertions.assertEquals(2_000 + 3_000, account.getBalance());
+        Assertions.assertEquals(5_000, account.getBalance());
     }
+
 
     @Test
     public void shouldNotAffectBalanceWhenAddZero() {
@@ -231,44 +232,6 @@ public class SavingAccountTest {
         account.add(-5_000);
 
         Assertions.assertEquals(2_000, account.getBalance());
-    }
-
-    @Test
-    public void balanceReplenishmentMinMax() {
-        SavingAccount account = new SavingAccount(
-                4_000,
-                3_000,
-                7_000,
-                5
-        );
-
-        account.add(1_000);
-
-        Assertions.assertEquals(5_000, account.getBalance());
-    }
-
-    @Test
-    public void minBalanceMoreMaxBalance() {
-        Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            SavingAccount account = new SavingAccount(
-                    2_000,
-                    15_000,
-                    6_000,
-                    12
-            );
-        });
-    }
-
-    @Test
-    public void transferOfNegativeInitialBalance() {
-        Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            SavingAccount account = new SavingAccount(
-                    -2_000,
-                    6_000,
-                    15_000,
-                    12
-            );
-        });
     }
 
     @Test
@@ -322,21 +285,7 @@ public class SavingAccountTest {
     }
 
     @Test
-    public void ReplenishmentOfTheBalanceWhenInit() {
-        SavingAccount account = new SavingAccount(
-                3_000,
-                3_000,
-                6_000,
-                5
-        );
-
-        account.add(2_000);
-
-        Assertions.assertEquals(5_000, account.getBalance());
-    }
-
-    @Test
-    public void balanceReplenishmentIsHigherMax() {
+пше     public void balanceReplenishmentIsHigherMax() {
         SavingAccount account = new SavingAccount(
                 4_000,
                 4_000,
