@@ -75,20 +75,20 @@ public class BankTest {
     }
 
     @Test
-    public void shouldNotTransferSavingToSavingBalanceLetterMin() {
+    public void NotTransferSavingToSavingBalanceLetterMin() {
         Bank bank = new Bank();
 
         Assertions.assertEquals(false,bank.transfer(account1, account2,2_000));
     }
     @Test
-    public void shouldNotTransferSavingToSavingBalanceBiggerMax() {
+    public void NotTransferSavingToSavingBalanceBiggerMax() {
         Bank bank = new Bank();
 
         Assertions.assertEquals(false,bank.transfer(account2, account1,3_000));
     }
 
     @Test
-    public void shouldTransferCreditToSaving() {
+    public void TransferCreditToSaving() {
         Bank bank = new Bank();
 
         Assertions.assertEquals(true,bank.transfer(account3, account1,2_000));
