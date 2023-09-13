@@ -312,4 +312,16 @@ public class SavingAccountTest {
         Assertions.assertEquals(4_000, account.getBalance());
     }
 
+    @Test
+    public void interesRateCalculation () {
+        SavingAccount account = new SavingAccount(
+                99,
+                50,
+                6_000,
+                80
+        );
+
+        Assertions.assertEquals(79, account.yearChange());
+    }
+
 }
