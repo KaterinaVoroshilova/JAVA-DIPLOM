@@ -21,9 +21,9 @@ public class Bank {
             if (to.add(amount)) {
                 return true;
             };
+           from.add(amount);
+           return false;
         }
         return false;
     }
 }
-
-
