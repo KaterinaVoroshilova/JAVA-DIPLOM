@@ -56,5 +56,14 @@ public class BankTest {
         Assertions.assertEquals(false,bank.transfer(account3, account1,5_001));
     }
 
+    @Test
+    public void shouldNotTransferCreditToSavingBiggerMaxBalance() {
+        Bank bank = new Bank();
+
+        Assertions.assertEquals(false,bank.transfer(account3, account1,5_000));
+        Assertions.assertEquals(0,account3.getBalance());
+        Assertions.assertEquals(4000,account1.getBalance());
+    }
+
 
 }
