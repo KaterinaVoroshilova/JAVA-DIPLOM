@@ -21,11 +21,8 @@ public class Bank {
             if (to.add(amount)) {
                 return true;
             };
-<<<<<<< Updated upstream
-=======
             from.add(amount);
             return false;
->>>>>>> Stashed changes
         }
         return false;
     }
