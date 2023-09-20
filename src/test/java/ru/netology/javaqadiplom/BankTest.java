@@ -91,9 +91,9 @@ public class BankTest {
     public void doNotTransferCreditMoreThanTheMax() {
         Bank bank = new Bank();
 
-        Assertions.assertEquals(false,bank.transfer(account3, account1,4_000));
+        Assertions.assertEquals(false,bank.transfer(account3, account1,5_000));
         Assertions.assertEquals(0,account3.getBalance());
-        Assertions.assertEquals(4_000,account1.getBalance());
+        Assertions.assertEquals(4000,account1.getBalance());
     }
 
 
